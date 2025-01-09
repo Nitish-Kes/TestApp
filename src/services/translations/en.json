@@ -1,0 +1,10 @@
+{
+    "loginform" : "Login Form",
+    "email" : "Email",
+    "password" : "Password",
+    "submit": "Submit",
+    "movieslist": "List of movies",
+    "nomoviesfound": "No movies found!!",
+    "failedtoloadmovies": "Failed to load movies!!",
+    "logout": "Logout"
+}
