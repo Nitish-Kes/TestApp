@@ -6,9 +6,7 @@ import FastImage from "react-native-fast-image";
 
 import styles from "./styles";
 import { baseImageURL, removeData } from "../../utils/DataUtils";
-// import { API_KEY } from '@env';
-
-const api_key = 'f484734d7f347bd6bb9d724445a1ad79'
+import { API_KEY } from '@env';
 
 const Home = () => {
   const [movies, setMovies] = useState<any[]>([]);
@@ -22,13 +20,11 @@ const Home = () => {
 
   const {t} = useTranslation()
 
-  // console.log('API_KEY',API_KEY)
-
 const fetchMovies = async (page: number) => {
   if(!hasMore) return
 
   try {
-    const response = await fetch(`https://api.themoviedb.org/3/movie/popular?api_key=${api_key}&page=${page}`);
+    const response = await fetch(`https://api.themoviedb.org/3/movie/popular?api_key=${API_KEY}&page=${page}`);
     const data = await response.json();
 
     if(data.results){
