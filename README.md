@@ -61,3 +61,5 @@ yarn: yarn android
 It will run the project in emulator or usb debugged real device
 
 Feel free to explore the live demo or run the project locally. Happy coding! 🎉
+![alt text](<Screenshot 2025-01-09 174915.png>)
+![alt text](<Screenshot 2025-01-09 173505.png>)
