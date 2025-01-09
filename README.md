@@ -1,79 +1,63 @@
-This is a new [**React Native**](https://reactnative.dev) project, bootstrapped using [`@react-native-community/cli`](https://github.com/react-native-community/cli).
+# TestApp
 
-# Getting Started
+A React Native application that allows users to enter their credentials, validates the input, and fetches a list of popular movies from the TMDB API. The app supports English and Arabic languages.
 
->**Note**: Make sure you have completed the [React Native - Environment Setup](https://reactnative.dev/docs/environment-setup) instructions till "Creating a new application" step, before proceeding.
+## Features
 
-## Step 1: Start the Metro Server
+Screen 1:
 
-First, you will need to start **Metro**, the JavaScript _bundler_ that ships _with_ React Native.
+A form with two fields: Email and Password.
+Validates email format and password requirements.
+Password must be:
+8–15 characters.
+Alphanumeric.
+Contain at least one uppercase letter and one special character.
+Submit button is disabled until inputs are valid.
+Upon successful validation, navigates to Screen 2.
 
-To start Metro, run the following command from the _root_ of your React Native project:
+Screen 2:
 
-```bash
-# using npm
-npm start
+Fetches a list of popular movies from the TMDB API.
+Displays movies in a grid view with 2 columns.
+Each grid item includes the movie title and poster image.
 
-# OR using Yarn
-yarn start
-```
+Localization:
 
-## Step 2: Start your Application
+Supports English and Arabic languages.
 
-Let Metro Bundler run in its _own_ terminal. Open a _new_ terminal from the _root_ of your React Native project. Run the following command to start your _Android_ or _iOS_ app:
+## Getting Started
 
-### For Android
+Follow these instructions to set up and run the project locally on your machine.
 
-```bash
-# using npm
-npm run android
+### Prerequisites
 
-# OR using Yarn
-yarn android
-```
+Ensure you have the following installed:
 
-### For iOS
+Node.js (v16 or later)
+npm (comes with Node.js) or yarn (optional package manager)
 
-```bash
-# using npm
-npm run ios
+### Install Dependencies
 
-# OR using Yarn
-yarn ios
-```
+Go to project folder and install dependencies using npm or yarn
+npm : npm install
+yarn : yarn
 
-If everything is set up _correctly_, you should see your new app running in your _Android Emulator_ or _iOS Simulator_ shortly provided you have set up your emulator/simulator correctly.
+This command will create node_modules into your project folder
 
-This is one way to run your app — you can also run it directly from within Android Studio and Xcode respectively.
+### Run Project
 
-## Step 3: Modifying your App
+To run the project , run following command based on package manager you are using
+npm: npm start
+yarn : yarn start
 
-Now that you have successfully run the app, let's modify it.
+This will start the development server and run the project locally on your machine .
+It will also provide the url which you can put in your preferred browser to see your application.
 
-1. Open `App.tsx` in your text editor of choice and edit some lines.
-2. For **Android**: Press the <kbd>R</kbd> key twice or select **"Reload"** from the **Developer Menu** (<kbd>Ctrl</kbd> + <kbd>M</kbd> (on Window and Linux) or <kbd>Cmd ⌘</kbd> + <kbd>M</kbd> (on macOS)) to see your changes!
+on Android
 
-   For **iOS**: Hit <kbd>Cmd ⌘</kbd> + <kbd>R</kbd> in your iOS Simulator to reload the app and see your changes!
+npm: npm run android
+yarn: yarn android
 
-## Congratulations! :tada:
+It will run the project in emulator or usb debugged real device
 
-You've successfully run and modified your React Native App. :partying_face:
-
-### Now what?
-
-- If you want to add this new React Native code to an existing application, check out the [Integration guide](https://reactnative.dev/docs/integration-with-existing-apps).
-- If you're curious to learn more about React Native, check out the [Introduction to React Native](https://reactnative.dev/docs/getting-started).
-
-# Troubleshooting
-
-If you can't get this to work, see the [Troubleshooting](https://reactnative.dev/docs/troubleshooting) page.
-
-# Learn More
-
-To learn more about React Native, take a look at the following resources:
-
-- [React Native Website](https://reactnative.dev) - learn more about React Native.
-- [Getting Started](https://reactnative.dev/docs/environment-setup) - an **overview** of React Native and how setup your environment.
-- [Learn the Basics](https://reactnative.dev/docs/getting-started) - a **guided tour** of the React Native **basics**.
-- [Blog](https://reactnative.dev/blog) - read the latest official React Native **Blog** posts.
-- [`@facebook/react-native`](https://github.com/facebook/react-native) - the Open Source; GitHub **repository** for React Native.
+Feel free to explore the live demo or run the project locally. Happy coding! 🎉
