@@ -16,14 +16,14 @@ const SignIn: FC = () => {
   const { email, password } = useSelector((state: RootState) => state.form);
   const navigation = useNavigation()
 
+    const {t,i18n} = useTranslation()
     const [open, setOpen] = useState<boolean>(false);
-    const [value, setValue] = useState<string>('en');
+    const [value, setValue] = useState<string>(i18n.language);
     const [items, setItems] = useState<item[]>([
         {label: 'English', value: 'en'},
         {label: 'Arabic', value: 'ar'},
     ]);
 
-  const {t,i18n} = useTranslation()
 
   const isFormValid = isValidEmail(email) && isValidPassword(password);
 

@@ -45,6 +45,7 @@ const styles = StyleSheet.create({
     logoutContainer: {
         alignSelf: 'flex-end', 
         width: '30%',
+        marginTop: '10%'
     },
   });
 

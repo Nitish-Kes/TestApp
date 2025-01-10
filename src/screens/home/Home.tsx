@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { View, Text, FlatList, ActivityIndicator, Button } from "react-native";
+import DropDownPicker from "react-native-dropdown-picker";
 import { useNavigation } from "@react-navigation/native";
 import { useTranslation } from "react-i18next";
 import FastImage from "react-native-fast-image";
@@ -7,6 +8,7 @@ import FastImage from "react-native-fast-image";
 import styles from "./styles";
 import { baseImageURL, removeData } from "../../utils/DataUtils";
 import { API_KEY } from '@env';
+import { item } from "../../utils/types";
 
 const Home = () => {
   const [movies, setMovies] = useState<any[]>([]);
@@ -16,15 +18,23 @@ const Home = () => {
   const [page, setPage] = useState<number>(1);
   const [hasMore, setHasMore] = useState<boolean>(true);
 
+  const {t,i18n} = useTranslation()
+
+  const [open, setOpen] = useState<boolean>(false);
+  const [value, setValue] = useState<string>(i18n.language);
+  const [items, setItems] = useState<item[]>([
+          {label: 'English', value: 'en'},
+          {label: 'Arabic', value: 'ar'},
+      ]);
+
   const navigation = useNavigation()
 
-  const {t} = useTranslation()
 
 const fetchMovies = async (page: number) => {
   if(!hasMore) return
 
   try {
-    const response = await fetch(`https://api.themoviedb.org/3/movie/popular?api_key=${API_KEY}&page=${page}`);
+    const response = await fetch(`https://api.themoviedb.org/3/movie/popular?api_key=${API_KEY}&page=${page}&language=${value}`);
     const data = await response.json();
 
     if(data.results){
@@ -42,6 +52,14 @@ const fetchMovies = async (page: number) => {
   useEffect(() => {
     fetchMovies(page);
   }, []);
+
+  useEffect(() => {
+    setMovies([]); 
+    setPage(1); 
+    setLoading(true); 
+    setHasMore(true);
+    fetchMovies(1); 
+  }, [value]);
 
   if (loading) {
     return (
@@ -75,7 +93,7 @@ const fetchMovies = async (page: number) => {
           }}
           resizeMode={FastImage.resizeMode.cover}
         />
-        <Text style={styles.title}>{item.original_title}</Text>
+        <Text style={styles.title}>{item.title}</Text>
       </View>
     );
   };
@@ -86,8 +104,22 @@ const fetchMovies = async (page: number) => {
     navigation.replace('SignIn')
   }
 
+  const handleLanguageChange = (value: string) => {
+    setValue(value);
+    i18n.changeLanguage(value)
+  };
+
   return (
     <View style={styles.container}>
+        <DropDownPicker
+          open={open}
+          value={value}
+          items={items}
+          setOpen={setOpen}
+          setValue={setValue}
+          setItems={setItems}
+          onChangeValue={(item) => handleLanguageChange(item)}
+        />
        <View style={styles.logoutContainer}>
         <Button
           title={t('logout')}
